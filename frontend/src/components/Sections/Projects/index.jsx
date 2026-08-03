@@ -114,7 +114,7 @@ const projects = [
 		metrics: [
 			{ label: "AI", value: "RAG" },
 			{ label: "Backend", value: "FastAPI" },
-			{ label: "Team", value: "Project Type" },
+			{ label: "Project", value: "Team" },
 		],
 		languageComposition: [
 			{ name: "Python", value: 47 },
@@ -193,81 +193,74 @@ const LANGUAGE_COLORS = [
 	"bg-emerald-500",
 ];
 
-const LANGUAGE_DOT_COLORS = [
-	"bg-yellow-500",
-	"bg-blue-500",
-	"bg-pink-500",
-	"bg-orange-500",
-	"bg-violet-500",
-	"bg-sky-500",
-	"bg-emerald-500",
-];
-
 function LanguageComposition({ languages, featured = false }) {
 	return (
-		<div className="mt-5">
+		<div className={featured ? "mt-6" : "mt-5"}>
 			{/* Header */}
-			<div className="mb-3 flex items-center justify-between">
-				<div className="flex items-center gap-2">
-					<BarChart3 className="text-primary h-3.5 w-3.5" />
+			<div className="mb-4 flex items-center justify-between">
+				<div className="flex items-center gap-3">
+					<div className="bg-primary/10 text-primary flex h-8 w-8 items-center justify-center rounded-lg">
+						<BarChart3 className="h-4 w-4" />
+					</div>
 
-					<span className="text-muted-foreground font-mono text-[10px] tracking-wider uppercase">
-						Language composition
-					</span>
+					<div>
+						<h3 className="text-foreground text-sm font-semibold">
+							Language composition
+						</h3>
+
+						<p className="text-muted-foreground mt-0.5 text-xs">
+							Breakdown of languages used in this project
+						</p>
+					</div>
 				</div>
 			</div>
-
-			{/* Language bar */}
+			{/* Language Bar */}
 			<div
-				className={`bg-secondary/60 border-border flex w-full overflow-hidden rounded-md border ${
-					featured ? "h-3.5" : "h-3"
+				className={`bg-muted/60 border-border/60 flex w-full gap-1 overflow-hidden rounded-full border p-1 ${
+					featured ? "h-5" : "h-4"
 				}`}
 			>
-				{languages.map((language, index) => (
-					<motion.div
-						key={language.name}
-						initial={{ width: 0 }}
-						whileInView={{ width: `${language.value}%` }}
-						viewport={{ once: true }}
-						transition={{
-							duration: 0.8,
-							delay: index * 0.05,
-							ease: [0.22, 1, 0.36, 1],
-						}}
-						title={`${language.name}: ${language.value}%`}
-						className={`${LANGUAGE_COLORS[index % LANGUAGE_COLORS.length]} h-full min-w-[2px] transition-opacity duration-200 hover:opacity-80`}
-					/>
-				))}
+				{languages.map((language, index) => {
+					const color = LANGUAGE_COLORS[index % LANGUAGE_COLORS.length];
+
+					return (
+						<motion.div
+							key={language.name}
+							initial={{ width: 0 }}
+							whileInView={{ width: `${language.value}%` }}
+							viewport={{ once: true }}
+							transition={{
+								duration: 0.8,
+								delay: index * 0.05,
+								ease: [0.22, 1, 0.36, 1],
+							}}
+							title={`${language.name}: ${language.value}%`}
+							className={`${color} h-full min-w-[4px] rounded-full opacity-90 transition-all duration-200 hover:opacity-100 hover:brightness-110`}
+						/>
+					);
+				})}
 			</div>
-
 			{/* Legend */}
-			<div
-				className={`mt-3 grid gap-x-4 gap-y-2 ${
-					languages.length > 3 ? "grid-cols-2" : "grid-cols-2"
-				}`}
-			>
-				{languages.map((language, index) => (
-					<div
-						key={language.name}
-						className="flex min-w-0 items-center justify-between gap-2"
-					>
-						<div className="flex min-w-0 items-center gap-1.5">
-							<span
-								className={`${
-									LANGUAGE_DOT_COLORS[index % LANGUAGE_DOT_COLORS.length]
-								} h-1.5 w-1.5 shrink-0 rounded-full`}
-							/>
-
-							<span className="text-muted-foreground truncate font-mono text-[10px]">
-								{language.name}
+			<div className="mt-3 grid grid-cols-2 gap-1.5">
+				{languages.map((language, index) => {
+					const color = LANGUAGE_COLORS[index % LANGUAGE_COLORS.length];
+					return (
+						<div
+							key={language.name}
+							className="group hover:border-border hover:bg-muted/50 flex items-center justify-between rounded-md border border-transparent px-2 py-1.5 transition-colors"
+						>
+							<div className="flex min-w-0 items-center gap-2">
+								<span className={`${color} h-2 w-2 shrink-0 rounded-full`} />
+								<span className="text-foreground truncate text-xs font-medium">
+									{language.name}
+								</span>
+							</div>
+							<span className="text-muted-foreground ml-2 shrink-0 text-xs font-medium tabular-nums">
+								{language.value}%
 							</span>
 						</div>
-
-						<span className="text-foreground shrink-0 font-mono text-[10px] font-medium">
-							{language.value}%
-						</span>
-					</div>
-				))}
+					);
+				})}
 			</div>
 		</div>
 	);
@@ -343,7 +336,7 @@ function ProjectCard({ project }) {
 				/>
 
 				{/* Technologies */}
-				<div className="mt-auto pt-5">
+				<div className="mt-auto pt-8">
 					<div className="flex flex-wrap gap-1.5">
 						{project.technologies.map((technology) => (
 							<span

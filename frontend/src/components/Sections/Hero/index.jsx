@@ -188,7 +188,7 @@ const Hero = () => {
 								<div>
 									<div className="text-foreground flex items-center gap-2 font-mono text-sm font-medium">
 										<Code2 className="text-primary h-4 w-4" />
-										Software Mechanic
+										Code Mechanic
 									</div>
 
 									<div className="text-muted-foreground mt-1 font-mono text-[12px]">
