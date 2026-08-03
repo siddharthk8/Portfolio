@@ -197,23 +197,15 @@ function LanguageComposition({ languages, featured = false }) {
 	return (
 		<div className={featured ? "mt-6" : "mt-5"}>
 			{/* Header */}
-			<div className="mb-4 flex items-center justify-between">
-				<div className="flex items-center gap-3">
-					<div className="bg-primary/10 text-primary flex h-8 w-8 items-center justify-center rounded-lg">
-						<BarChart3 className="h-4 w-4" />
-					</div>
 
-					<div>
-						<h3 className="text-foreground text-sm font-semibold">
-							Language composition
-						</h3>
-
-						<p className="text-muted-foreground mt-0.5 text-xs">
-							Breakdown of languages used in this project
-						</p>
-					</div>
+			<div className="mb-2 flex items-center gap-3">
+				<div className="bg-primary/10 text-primary flex h-8 w-8 items-center justify-center rounded-lg">
+					<BarChart3 className="h-4 w-4" />
 				</div>
+
+				<h3 className="text-foreground text-[12px] font-semibold">Language Composition</h3>
 			</div>
+
 			{/* Language Bar */}
 			<div
 				className={`bg-muted/60 border-border/60 flex w-full gap-1 overflow-hidden rounded-full border p-1 ${
