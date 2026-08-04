@@ -5,7 +5,6 @@ import LawGenieSvg from "@/assets/projects/lawgenie.svg";
 import RoundTableImage from "@/assets/projects/roundtable.png";
 import SignalOpsSvg from "@/assets/projects/signalops.svg";
 import Button from "@/components/Button";
-import Container from "@/components/Container";
 
 const projects = [
 	{
@@ -218,16 +217,20 @@ function LanguageComposition({ languages, featured = false }) {
 					return (
 						<motion.div
 							key={language.name}
-							initial={{ width: 0 }}
-							whileInView={{ width: `${language.value}%` }}
+							initial={{ scaleX: 0 }}
+							whileInView={{ scaleX: 1 }}
 							viewport={{ once: true }}
 							transition={{
-								duration: 0.8,
+								duration: 1,
 								delay: index * 0.05,
 								ease: [0.22, 1, 0.36, 1],
 							}}
+							style={{
+								width: `${language.value}%`,
+								transformOrigin: "left",
+							}}
 							title={`${language.name}: ${language.value}%`}
-							className={`${color} h-full min-w-[4px] rounded-full opacity-90 transition-all duration-200 hover:opacity-100 hover:brightness-110`}
+							className={`${color} h-full min-w-[4px] rounded-full opacity-90 hover:opacity-100 hover:brightness-110`}
 						/>
 					);
 				})}
@@ -384,81 +387,79 @@ function ProjectCard({ project }) {
 export default function Projects() {
 	return (
 		<section id="projects" className="bg-background z-10">
-			<Container className="py-20 sm:py-24 lg:py-28">
-				<div className="mx-auto max-w-7xl">
-					{/* Section heading */}
-					<motion.div
-						initial={{ opacity: 0, y: 18 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true, margin: "-100px" }}
-						transition={{ duration: 0.5 }}
-						className="mb-12"
-					>
-						<div className="mb-4 flex items-center gap-3">
-							<div className="bg-primary h-px w-8" />
+			<div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+				{/* Section heading */}
+				<motion.div
+					initial={{ opacity: 0, y: 18 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, margin: "-100px" }}
+					transition={{ duration: 0.5 }}
+					className="mb-12"
+				>
+					<div className="mb-4 flex items-center gap-3">
+						<div className="bg-primary h-px w-8" />
 
-							<span className="text-primary font-mono text-xs font-medium tracking-[0.2em] uppercase">
-								03 / Projects
+						<span className="text-primary font-mono text-xs font-medium tracking-[0.2em] uppercase">
+							03 / Projects
+						</span>
+					</div>
+
+					<div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
+						<div>
+							<h2 className="text-foreground max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+								Things I've <span className="text-primary">built.</span>
+							</h2>
+
+							<p className="text-muted-foreground mt-4 max-w-2xl text-base leading-7 sm:text-lg">
+								A collection of systems, products, and experiments where software
+								engineering meets real-world problems.
+							</p>
+						</div>
+
+						<div className="border-border bg-card flex w-fit items-center gap-3 rounded-lg border px-3 py-2">
+							<div className="bg-primary h-2 w-2 animate-pulse rounded-full" />
+
+							<span className="text-muted-foreground font-mono text-xs">
+								{projects.length} projects · continuously building
 							</span>
 						</div>
+					</div>
+				</motion.div>
 
-						<div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
-							<div>
-								<h2 className="text-foreground max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-									Things I've <span className="text-primary">built.</span>
-								</h2>
+				{/* Projects */}
+				<motion.div
+					variants={containerVariants}
+					initial="hidden"
+					whileInView="show"
+					viewport={{ once: true, margin: "-80px" }}
+					className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
+				>
+					{projects.map((project) => (
+						<ProjectCard key={project.name} project={project} />
+					))}
+				</motion.div>
 
-								<p className="text-muted-foreground mt-4 max-w-2xl text-base leading-7 sm:text-lg">
-									A collection of systems, products, and experiments where
-									software engineering meets real-world problems.
-								</p>
-							</div>
-
-							<div className="border-border bg-card flex w-fit items-center gap-3 rounded-lg border px-3 py-2">
-								<div className="bg-primary h-2 w-2 animate-pulse rounded-full" />
-
-								<span className="text-muted-foreground font-mono text-xs">
-									{projects.length} projects · continuously building
-								</span>
-							</div>
-						</div>
-					</motion.div>
-
-					{/* Projects */}
-					<motion.div
-						variants={containerVariants}
-						initial="hidden"
-						whileInView="show"
-						viewport={{ once: true, margin: "-80px" }}
-						className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
-					>
-						{projects.map((project) => (
-							<ProjectCard key={project.name} project={project} />
-						))}
-					</motion.div>
-
-					{/* Footer note */}
-					<motion.div
-						initial={{ opacity: 0 }}
-						whileInView={{ opacity: 1 }}
-						viewport={{ once: true }}
-						transition={{ delay: 0.2, duration: 0.5 }}
-						onClick={() => {
-							window.open(
-								"https://github.com/siddharthk8",
-								"_blank",
-								"noopener,noreferrer",
-							);
-						}}
-						className="mt-10 flex cursor-pointer items-center justify-center"
-					>
-						<div className="text-muted-foreground flex items-center gap-2 font-mono text-xs">
-							<ExternalLink className="h-3.5 w-3.5" />
-							<span>More projects are constantly being built.</span>
-						</div>
-					</motion.div>
-				</div>
-			</Container>
+				{/* Footer note */}
+				<motion.div
+					initial={{ opacity: 0 }}
+					whileInView={{ opacity: 1 }}
+					viewport={{ once: true }}
+					transition={{ delay: 0.2, duration: 0.5 }}
+					onClick={() => {
+						window.open(
+							"https://github.com/siddharthk8",
+							"_blank",
+							"noopener,noreferrer",
+						);
+					}}
+					className="mt-10 flex cursor-pointer items-center justify-center"
+				>
+					<div className="text-muted-foreground flex items-center gap-2 font-mono text-xs">
+						<ExternalLink className="h-3.5 w-3.5" />
+						<span>More projects are constantly being built.</span>
+					</div>
+				</motion.div>
+			</div>
 		</section>
 	);
 }

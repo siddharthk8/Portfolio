@@ -11,8 +11,6 @@ import {
 	StarCheck,
 } from "lucide-react";
 
-import Container from "@/components/Container";
-
 const stackGroups = [
 	{
 		id: "languages",
@@ -238,213 +236,206 @@ export default function Skills() {
 
 	return (
 		<section id="skills" className="bg-background z-10 overflow-hidden">
-			<Container className="px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
-				<div className="mx-auto w-full max-w-7xl">
-					{/* Header */}
-					<motion.div
-						initial={{
-							opacity: 0,
-							y: shouldReduceMotion ? 0 : 18,
-						}}
-						whileInView={{
-							opacity: 1,
-							y: 0,
-						}}
-						viewport={{
-							once: true,
-							margin: "-100px",
-						}}
-						transition={{
-							duration: shouldReduceMotion ? 0 : 0.5,
-						}}
-						className="mb-9 sm:mb-12"
-					>
-						<div className="mb-4 flex items-center gap-3">
-							<div className="bg-primary h-px w-6 sm:w-8" />
+			<div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+				{/* Header */}
+				<motion.div
+					initial={{
+						opacity: 0,
+						y: shouldReduceMotion ? 0 : 18,
+					}}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+					}}
+					viewport={{
+						once: true,
+						margin: "-100px",
+					}}
+					transition={{
+						duration: shouldReduceMotion ? 0 : 0.5,
+					}}
+					className="mb-9 sm:mb-12"
+				>
+					<div className="mb-4 flex items-center gap-3">
+						<div className="bg-primary h-px w-6 sm:w-8" />
 
-							<span className="text-primary font-mono text-[10px] font-medium tracking-[0.16em] uppercase sm:text-xs sm:tracking-[0.2em]">
-								04 / Skills
+						<span className="text-primary font-mono text-[10px] font-medium tracking-[0.16em] uppercase sm:text-xs sm:tracking-[0.2em]">
+							04 / Skills
+						</span>
+					</div>
+
+					<div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+						<div className="min-w-0">
+							<h2 className="text-foreground max-w-3xl text-3xl leading-[1.1] font-bold tracking-tight sm:text-4xl lg:text-5xl">
+								The stack I <span className="text-primary">build with.</span>
+							</h2>
+
+							<p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-6 sm:text-base sm:leading-7 lg:text-lg">
+								A focused view of the technologies I actually use across projects —
+								not an exhaustive list of everything I've ever touched.
+							</p>
+						</div>
+
+						<div className="border-border bg-card flex w-fit max-w-full items-center gap-2 rounded-lg border px-3 py-2">
+							<GitBranch className="text-primary h-3.5 w-3.5 shrink-0" />
+
+							<span className="text-muted-foreground truncate font-mono text-[10px] sm:text-xs">
+								stack = evolving
 							</span>
 						</div>
+					</div>
+				</motion.div>
 
-						<div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-							<div className="min-w-0">
-								<h2 className="text-foreground max-w-3xl text-3xl leading-[1.1] font-bold tracking-tight sm:text-4xl lg:text-5xl">
-									The stack I <span className="text-primary">build with.</span>
-								</h2>
+				{/* Primary stack */}
+				<motion.div
+					variants={containerVariants}
+					initial="hidden"
+					whileInView="show"
+					viewport={{
+						once: true,
+						margin: "-80px",
+					}}
+					className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3"
+				>
+					{stackGroups.map((group) => (
+						<StackCard key={group.id} group={group} />
+					))}
+				</motion.div>
 
-								<p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-6 sm:text-base sm:leading-7 lg:text-lg">
-									A focused view of the technologies I actually use across
-									projects — not an exhaustive list of everything I've ever
-									touched.
-								</p>
-							</div>
+				{/* Engineering profile */}
+				<motion.div
+					initial={{
+						opacity: 0,
+						y: shouldReduceMotion ? 0 : 20,
+					}}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+					}}
+					viewport={{
+						once: true,
+						margin: "-80px",
+					}}
+					transition={{
+						duration: shouldReduceMotion ? 0 : 0.5,
+					}}
+					className="border-border bg-card relative mt-5 overflow-hidden rounded-2xl border sm:mt-6"
+				>
+					{/* Technical grid */}
+					<div className="pointer-events-none absolute inset-0 opacity-[0.025]">
+						<div
+							className="h-full w-full"
+							style={{
+								backgroundImage:
+									"linear-gradient(var(--color-foreground) 1px, transparent 1px), linear-gradient(90deg, var(--color-foreground) 1px, transparent 1px)",
+								backgroundSize: "28px 28px",
+							}}
+						/>
+					</div>
 
-							<div className="border-border bg-card flex w-fit max-w-full items-center gap-2 rounded-lg border px-3 py-2">
-								<GitBranch className="text-primary h-3.5 w-3.5 shrink-0" />
+					{/* Primary accent */}
+					<div className="bg-primary absolute top-0 left-0 h-full w-px" />
 
-								<span className="text-muted-foreground truncate font-mono text-[10px] sm:text-xs">
-									stack = evolving
+					<div className="relative grid lg:grid-cols-[0.85fr_1.15fr]">
+						{/* Profile */}
+						<div className="border-border border-b p-5 sm:p-6 lg:border-r lg:border-b-0 lg:p-8">
+							<div className="flex items-center gap-2">
+								<div className="bg-primary/10 text-primary flex h-8 w-8 items-center justify-center rounded-lg">
+									<BrainCircuit className="h-4 w-4" />
+								</div>
+
+								<span className="text-primary font-mono text-[9px] tracking-[0.18em] uppercase sm:text-[10px]">
+									Engineering profile
 								</span>
 							</div>
-						</div>
-					</motion.div>
 
-					{/* Primary stack */}
-					<motion.div
-						variants={containerVariants}
-						initial="hidden"
-						whileInView="show"
-						viewport={{
-							once: true,
-							margin: "-80px",
-						}}
-						className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3"
-					>
-						{stackGroups.map((group) => (
-							<StackCard key={group.id} group={group} />
-						))}
-					</motion.div>
+							<h3 className="text-card-foreground mt-4 max-w-sm text-xl leading-tight font-bold tracking-tight sm:text-2xl">
+								Built around systems,
+								<br className="hidden sm:block" /> not just interfaces.
+							</h3>
 
-					{/* Engineering profile */}
-					<motion.div
-						initial={{
-							opacity: 0,
-							y: shouldReduceMotion ? 0 : 20,
-						}}
-						whileInView={{
-							opacity: 1,
-							y: 0,
-						}}
-						viewport={{
-							once: true,
-							margin: "-80px",
-						}}
-						transition={{
-							duration: shouldReduceMotion ? 0 : 0.5,
-						}}
-						className="border-border bg-card relative mt-5 overflow-hidden rounded-2xl border sm:mt-6"
-					>
-						{/* Technical grid */}
-						<div className="pointer-events-none absolute inset-0 opacity-[0.025]">
-							<div
-								className="h-full w-full"
-								style={{
-									backgroundImage:
-										"linear-gradient(var(--color-foreground) 1px, transparent 1px), linear-gradient(90deg, var(--color-foreground) 1px, transparent 1px)",
-									backgroundSize: "28px 28px",
-								}}
-							/>
-						</div>
+							<p className="text-muted-foreground mt-3 max-w-md text-sm leading-6">
+								I gravitate toward projects where frontend, backend, cloud, and AI
+								have to work together as one system.
+							</p>
 
-						{/* Primary accent */}
-						<div className="bg-primary absolute top-0 left-0 h-full w-px" />
-
-						<div className="relative grid lg:grid-cols-[0.85fr_1.15fr]">
-							{/* Profile */}
-							<div className="border-border border-b p-5 sm:p-6 lg:border-r lg:border-b-0 lg:p-8">
-								<div className="flex items-center gap-2">
-									<div className="bg-primary/10 text-primary flex h-8 w-8 items-center justify-center rounded-lg">
-										<BrainCircuit className="h-4 w-4" />
-									</div>
-
-									<span className="text-primary font-mono text-[9px] tracking-[0.18em] uppercase sm:text-[10px]">
-										Engineering profile
-									</span>
+							<div className="border-border mt-5 flex items-center gap-3 border-t pt-4 sm:mt-6 sm:pt-5">
+								<div className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
+									<ArrowUpRight className="h-4 w-4" />
 								</div>
 
-								<h3 className="text-card-foreground mt-4 max-w-sm text-xl leading-tight font-bold tracking-tight sm:text-2xl">
-									Built around systems,
-									<br className="hidden sm:block" /> not just interfaces.
-								</h3>
+								<div className="min-w-0">
+									<p className="text-card-foreground text-xs font-semibold">
+										Learning through building
+									</p>
 
-								<p className="text-muted-foreground mt-3 max-w-md text-sm leading-6">
-									I gravitate toward projects where frontend, backend, cloud, and
-									AI have to work together as one system.
-								</p>
-
-								<div className="border-border mt-5 flex items-center gap-3 border-t pt-4 sm:mt-6 sm:pt-5">
-									<div className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
-										<ArrowUpRight className="h-4 w-4" />
-									</div>
-
-									<div className="min-w-0">
-										<p className="text-card-foreground text-xs font-semibold">
-											Learning through building
-										</p>
-
-										<p className="text-muted-foreground mt-0.5 truncate text-[11px]">
-											The stack grows with the problems.
-										</p>
-									</div>
-								</div>
-							</div>
-
-							{/* Current focus */}
-							<div className="p-5 sm:p-6 lg:p-8">
-								<div className="mb-4 flex items-center justify-between sm:mb-5">
-									<span className="text-muted-foreground font-mono text-[9px] tracking-[0.18em] uppercase sm:text-[10px]">
-										Current focus
-									</span>
-
-									<span className="text-muted-foreground/40 font-mono text-[9px]">
-										04 areas
-									</span>
-								</div>
-
-								<div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3">
-									{engineeringAreas.map((area, index) => (
-										<EngineeringArea
-											key={area.label}
-											area={area}
-											index={index}
-										/>
-									))}
-								</div>
-							</div>
-						</div>
-					</motion.div>
-
-					{/* Supporting stack */}
-					<motion.div
-						initial={{ opacity: 0 }}
-						whileInView={{ opacity: 1 }}
-						viewport={{ once: true }}
-						transition={{
-							delay: shouldReduceMotion ? 0 : 0.15,
-							duration: shouldReduceMotion ? 0 : 0.45,
-						}}
-						className="border-border mt-5 rounded-2xl border border-dashed p-4 sm:mt-6 sm:p-5"
-					>
-						<div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-							<div className="min-w-0">
-								<div className="flex items-center gap-2">
-									<div className="bg-primary h-1.5 w-1.5 rounded-full" />
-
-									<p className="text-foreground text-sm font-semibold">
-										Supporting toolkit
+									<p className="text-muted-foreground mt-0.5 truncate text-[11px]">
+										The stack grows with the problems.
 									</p>
 								</div>
+							</div>
+						</div>
 
-								<p className="text-muted-foreground mt-1 text-xs">
-									Tools that sit around my main stack.
-								</p>
+						{/* Current focus */}
+						<div className="p-5 sm:p-6 lg:p-8">
+							<div className="mb-4 flex items-center justify-between sm:mb-5">
+								<span className="text-muted-foreground font-mono text-[9px] tracking-[0.18em] uppercase sm:text-[10px]">
+									Current focus
+								</span>
+
+								<span className="text-muted-foreground/40 font-mono text-[9px]">
+									04 areas
+								</span>
 							</div>
 
-							<div className="flex flex-wrap gap-1.5 sm:max-w-2xl sm:justify-end">
-								{supportingStack.map((technology) => (
-									<span
-										key={technology}
-										className="border-border bg-card text-muted-foreground hover:border-primary/30 hover:text-foreground rounded-lg border px-2.5 py-1.5 font-mono text-[9px] transition-colors sm:text-[10px]"
-									>
-										{technology}
-									</span>
+							<div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3">
+								{engineeringAreas.map((area, index) => (
+									<EngineeringArea key={area.label} area={area} index={index} />
 								))}
 							</div>
 						</div>
-					</motion.div>
-				</div>
-			</Container>
+					</div>
+				</motion.div>
+
+				{/* Supporting stack */}
+				<motion.div
+					initial={{ opacity: 0 }}
+					whileInView={{ opacity: 1 }}
+					viewport={{ once: true }}
+					transition={{
+						delay: shouldReduceMotion ? 0 : 0.15,
+						duration: shouldReduceMotion ? 0 : 0.45,
+					}}
+					className="border-border mt-5 rounded-2xl border border-dashed p-4 sm:mt-6 sm:p-5"
+				>
+					<div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+						<div className="min-w-0">
+							<div className="flex items-center gap-2">
+								<div className="bg-primary h-1.5 w-1.5 rounded-full" />
+
+								<p className="text-foreground text-sm font-semibold">
+									Supporting toolkit
+								</p>
+							</div>
+
+							<p className="text-muted-foreground mt-1 text-xs">
+								Tools that sit around my main stack.
+							</p>
+						</div>
+
+						<div className="flex flex-wrap gap-1.5 sm:max-w-2xl sm:justify-end">
+							{supportingStack.map((technology) => (
+								<span
+									key={technology}
+									className="border-border bg-card text-muted-foreground hover:border-primary/30 hover:text-foreground rounded-lg border px-2.5 py-1.5 font-mono text-[9px] transition-colors sm:text-[10px]"
+								>
+									{technology}
+								</span>
+							))}
+						</div>
+					</div>
+				</motion.div>
+			</div>
 		</section>
 	);
 }
