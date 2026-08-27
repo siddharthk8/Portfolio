@@ -2,7 +2,7 @@ import Container from "@/components/Container";
 
 function NotFoundPage() {
 	return (
-		<div className="bg-background flex items-center justify-center">
+		<div className="bg-background flex min-h-screen items-center justify-center">
 			<Container>
 				<div className="mx-auto max-w-xl text-center">
 					<p className="text-primary font-mono text-9xl font-bold select-none">404</p>
