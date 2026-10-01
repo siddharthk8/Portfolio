@@ -1,37 +1,113 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<link rel="shortcut icon" href="/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-	<meta name="apple-mobile-web-app-title" content="Siddharth Portfolio" />
-	<link rel="manifest" href="/site.webmanifest" />
+		<!-- Primary SEO -->
+		<title>Siddharth Kumar — Software Engineer</title>
+		<meta
+			name="description"
+			content="Siddharth Kumar is a software engineer focused on full-stack development, backend systems, cloud applications, and practical AI/ML."
+		/>
+		<meta name="author" content="Siddharth Kumar" />
 
-    <title>Siddharth kumar</title>
-    <script>
-		(function () {
-			// TailwindCSS suggestion to avoid FOUC(Flash Of Unstyled Content)
-			const theme = localStorage.theme;
-			const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+		<!-- Search Engine Crawling -->
+		<meta name="robots" content="index, follow" />
+		<meta name="googlebot" content="index, follow" />
 
-			// (theme === "system" && prefersDark) is important below.
-			// since we are storing "system" in localStorage.
-			if (
-				theme === "dark" ||
-				(theme === "system" && prefersDark) ||
-				(!theme && prefersDark)
-			) {
-				document.documentElement.classList.add("dark");
+		<link rel="canonical" href="https://siddharthkr.com/" />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Siddharth Kumar — Software Engineer" />
+		<meta
+			property="og:description"
+			content="Software engineer focused on full-stack development, backend systems, cloud applications, and practical AI/ML."
+		/>
+		<meta property="og:url" content="https://siddharthkr.com/" />
+		<meta property="og:site_name" content="Siddharth Kumar" />
+		<meta property="og:image" content="https://siddharthkr.com/og-image.png" />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Siddharth Kumar — Software Engineer" />
+		<meta property="og:locale" content="en_IN" />
+
+		<!-- X / Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Siddharth Kumar — Software Engineer" />
+		<meta
+			name="twitter:description"
+			content="Software engineer focused on full-stack development, backend systems, cloud applications, and practical AI/ML."
+		/>
+		<meta name="twitter:image" content="https://siddharthkr.com/og-image.png" />
+		<meta name="twitter:image:alt" content="Siddharth Kumar — Software Engineer" />
+
+		<!-- Browser Theme -->
+		<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
+
+		<!-- Structured Data -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Siddharth Kumar",
+				"url": "https://siddharthkr.com/",
+				"jobTitle": "Software Engineer",
+				"description": "Software engineer focused on full-stack development, backend systems, cloud applications, and practical AI/ML.",
+				"knowsAbout": [
+					"Software Engineering",
+					"Full-Stack Development",
+					"Backend Development",
+					"Data Structures and Algorithms",
+					"Python",
+					"Java",
+					"JavaScript",
+					"React",
+					"FastAPI",
+					"Django",
+					"AWS",
+					"Artificial Intelligence",
+					"Machine Learning",
+					"REST APIs",
+					"System Design"
+				],
+				"sameAs": [
+					"https://github.com/siddharthk8",
+					"https://www.linkedin.com/in/siddharth-kumar-profile"
+				]
 			}
-		})();
-	</script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+		</script>
+
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="Siddharth Kumar" />
+		<link rel="manifest" href="/site.webmanifest" />
+
+		<script>
+			(function () {
+				// TailwindCSS suggestion to avoid FOUC(Flash Of Unstyled Content)
+				const theme = localStorage.theme;
+				const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+				// (theme === "system" && prefersDark) is important below.
+				// since we are storing "system" in localStorage.
+				if (
+					theme === "dark" ||
+					(theme === "system" && prefersDark) ||
+					(!theme && prefersDark)
+				) {
+					document.documentElement.classList.add("dark");
+				}
+			})();
+		</script>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script type="module" src="/src/main.jsx"></script>
+	</body>
 </html>
