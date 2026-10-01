@@ -11,6 +11,7 @@ import {
 	Terminal,
 } from "lucide-react";
 
+import ProfileImage from "@/assets/images/siddharth.jpeg";
 import Button from "@/components/Button";
 
 const containerVariants = {
@@ -110,7 +111,7 @@ const Hero = () => {
 						<motion.div variants={itemVariants}>
 							<div className="mb-6">
 								<img
-									src="/images/siddharth.jpeg"
+									src={ProfileImage}
 									alt="Siddharth Kumar"
 									className="border-border h-32 w-32 rounded-full border object-cover shadow-lg"
 								/>
