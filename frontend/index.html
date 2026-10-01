@@ -52,31 +52,63 @@
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
-				"@type": "Person",
-				"name": "Siddharth Kumar",
-				"url": "https://siddharthkr.com/",
-				"jobTitle": "Software Engineer",
-				"description": "Software engineer focused on full-stack development, backend systems, cloud applications, and practical AI/ML.",
-				"knowsAbout": [
-					"Software Engineering",
-					"Full-Stack Development",
-					"Backend Development",
-					"Data Structures and Algorithms",
-					"Python",
-					"Java",
-					"JavaScript",
-					"React",
-					"FastAPI",
-					"Django",
-					"AWS",
-					"Artificial Intelligence",
-					"Machine Learning",
-					"REST APIs",
-					"System Design"
-				],
-				"sameAs": [
-					"https://github.com/siddharthk8",
-					"https://www.linkedin.com/in/siddharth-kumar-profile"
+				"@graph": [
+					{
+						"@type": "ProfilePage",
+						"@id": "https://siddharthkr.com/#profile",
+						"url": "https://siddharthkr.com/",
+						"name": "Siddharth Kumar — Software Engineer",
+						"description": "Portfolio of Siddharth Kumar, a software engineer focused on full-stack development, backend systems, cloud applications, and practical AI/ML.",
+						"mainEntity": {
+							"@id": "https://siddharthkr.com/#person"
+						}
+					},
+					{
+						"@type": "Person",
+						"@id": "https://siddharthkr.com/#person",
+						"name": "Siddharth Kumar",
+						"url": "https://siddharthkr.com/",
+						"jobTitle": "Software Engineer",
+						"description": "Software engineer focused on full-stack development, backend systems, cloud applications, and practical AI/ML.",
+						"image": "https://siddharthkr.com/images/siddharth.jpeg",
+						"sameAs": [
+							"https://github.com/siddharthk8",
+							"https://www.linkedin.com/in/siddharth-kumar-profile"
+						],
+						"knowsAbout": [
+							"Software Engineering",
+							"Full-Stack Development",
+							"Backend Development",
+							"System Design",
+							"REST APIs",
+							"Python",
+							"Java",
+							"JavaScript",
+							"React",
+							"Django",
+							"Django REST Framework",
+							"FastAPI",
+							"SQL",
+							"SQLAlchemy",
+							"Amazon Web Services",
+							"Amazon EC2",
+							"Amazon S3",
+							"AWS Bedrock",
+							"Artificial Intelligence",
+							"Large Language Models",
+							"Retrieval-Augmented Generation"
+						]
+					},
+					{
+						"@type": "WebSite",
+						"@id": "https://siddharthkr.com/#website",
+						"url": "https://siddharthkr.com/",
+						"name": "Siddharth Kumar — Software Engineer",
+						"description": "Personal portfolio of Siddharth Kumar showcasing software engineering projects, experience, skills, and technical work.",
+						"publisher": {
+							"@id": "https://siddharthkr.com/#person"
+						}
+					}
 				]
 			}
 		</script>
