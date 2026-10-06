@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, BarChart3, ExternalLink, GitCommit, Globe2, Sparkles } from "lucide-react";
 
-import LawGenieSvg from "@/assets/projects/lawgenie.svg";
-import RoundTableImage from "@/assets/projects/roundtable.png";
-import SignalOpsSvg from "@/assets/projects/signalops.svg";
+import LawGenieSvg from "@/assets/images/projects/lawgenie.svg";
+import RoundTableImage from "@/assets/images/projects/roundtable.png";
+import SignalOpsSvg from "@/assets/images/projects/signalops.svg";
 import Button from "@/components/Button";
 
 const projects = [
